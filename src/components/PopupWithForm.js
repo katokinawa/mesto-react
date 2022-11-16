@@ -1,32 +1,7 @@
-import logo from './logo.svg';
 
-function App() {
-  return ( 
-  <div className="body">
-    <div className="page">
-      <header className="header page__header">
-        <div className="logo"></div>
-      </header>
-      <main className="content">
-        <section className="profile content__profile">
-          <div className="profile__pen"></div>
-          <img className="profile__avatar" src="#" alt="" />
-          <div className="profile__title-wrapper">
-            <h1 className="profile__title title">Жак-Ив Кусто</h1>
-            <button type="button" id="edit-button" className="profile__edit-button"></button>
-          </div>
-          <p className="profile__subtitle subtitle">Исследователь океана</p>
-          <button type="button" id="add-button" className="profile__add-button"></button>
-        </section>
-        <section className="photo-flex content__photo-flex" aria-label="photo-flex">
-          <ul className="photo-flex__list">
-          </ul>
-        </section>
-      </main>
-      <footer className="footer page__footer">
-        <p className="subtitle footer__subtitle">© 2020 Mesto Russia</p>
-      </footer>
-    </div>
+function PopupWithForm() {
+    return (
+<>
     <section className="popup profile-popup">
       <div className="popup__container">
         <h2 className="title popup__title">Редактировать профиль</h2>
@@ -83,24 +58,9 @@ function App() {
         <button type="button" className="popup__close-button"></button>
       </div>
     </section>
-    <section className="popup photo-fullscreen-popup">
-      <div className=" popup__container-image">
-        <img className="popup__image" src="#" alt="#" />
-        <h2 className="popup__title-image title">#</h2>
-        <button type="button" className="popup__close-button"></button>
-      </div>
-    </section>
-    <template id="photo-template">
-      <li id="container" className="photo-flex__item">
-        <img id="linktemplate" src="#" alt="#" className="photo-flex__image" />
-        <button id="like" type="button" className="photo-flex__like-button"></button>
-        <div className="photo-flex__like-count">0</div>
-        <h2 id="nametemplate" className="title photo-flex__title">#</h2>
-        <button type="button" className="photo-flex__trash"></button>
-      </li>
-    </template>
-  </div>
-  );
-}
-
-export default App;
+</>
+    );
+  }
+  
+  export default PopupWithForm;
+  
