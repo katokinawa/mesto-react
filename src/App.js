@@ -2,7 +2,7 @@ import logo from './logo.svg';
 
 function App() {
   return ( 
-    <body className="body">
+  <div className="body">
     <div className="page">
       <header className="header page__header">
         <div className="logo"></div>
@@ -99,7 +99,7 @@ function App() {
         <button type="button" className="photo-flex__trash"></button>
       </li>
     </template>
-</body>
+  </div>
   );
 }
 
