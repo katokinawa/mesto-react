@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ApiConfig } from '../utils/Api';
+import { ApiConfig } from '../utils/api';
 import Card from './Card';
 
 function Main(props) {
