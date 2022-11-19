@@ -1,5 +1,6 @@
 
 function ImagePopup({card, onClose}) {
+
     return (
       <section className={`popup photo-fullscreen-popup ${card ? 'popup_opened' : ''}`}>
         <div className=" popup__container-image">

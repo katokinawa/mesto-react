@@ -12,7 +12,7 @@ useEffect(() => {
     ApiConfig.getInitialCards().then(data => {
       setCards(data)
     })
-   ApiConfig.getUserInfo().then(data => {
+    ApiConfig.getUserInfo().then(data => {
       setUserName(data.name)
       setUserDescription(data.about)
       setUserAvatar(data.avatar)
