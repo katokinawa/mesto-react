@@ -9,11 +9,13 @@ function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState('')
 
   function closeAllPopups() {
     setEditProfilePopupOpen(false)
     setAddPlacePopupOpen(false)
     setEditAvatarPopupOpen(false)
+    setSelectedCard('')
   }
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true)
@@ -24,7 +26,10 @@ function App() {
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true)
   }
-
+  function handleCardClick(card) {
+    setSelectedCard(card);
+  }
+  
   return ( 
   <div className="body">
     <div className="page">
@@ -33,6 +38,7 @@ function App() {
       onEditProfile={handleEditProfileClick}
       onAddPlace={handleAddPlaceClick}
       onEditAvatar={handleEditAvatarClick}
+      onCardClick={handleCardClick}
        />
       <Footer />
     </div>
@@ -99,7 +105,10 @@ function App() {
     <button type="submit" name="create" className="popup__button popup__create-button">Создать</button>
     </PopupWithForm>
 
-    <ImagePopup />
+    <ImagePopup
+    card={selectedCard}
+    onClose={closeAllPopups}
+    />
   </div>
   );
 }
