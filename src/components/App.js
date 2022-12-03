@@ -19,7 +19,7 @@ function App() {
     ApiConfig.getUserInfo().then(data => {
       setCurrentUser(data)
     });
-  })
+  }, [])
 
   function closeAllPopups() {
     setEditProfilePopupOpen(false)
