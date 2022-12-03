@@ -44,6 +44,7 @@
 @import url(./blocks/photo-flex/__like-count/photo-flex__like-count.css);
 @import url(./blocks/photo-flex/__title/photo-flex__title.css);
 @import url(./blocks/photo-flex/__trash/photo-flex__trash.css);
+@import url(./blocks/photo-flex/__trash/_hidden/photo-flex__trash_hidden.css);
 @import url(./blocks/photo-flex/__like-button/photo-flex__like-button.css);
 @import url(./blocks/photo-flex/__like-button/_active/photo-flex__like-button_active.css);
 @import url(./blocks/footer/footer.css);
