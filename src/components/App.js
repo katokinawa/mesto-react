@@ -3,10 +3,11 @@ import Main from './Main';
 import Footer from './Footer';
 import ImagePopup from './ImagePopup';
 import PopupWithForm from './PopupWithForm';
+import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { ApiConfig } from '../utils/api';
 import { useEffect, useState } from 'react';
-import EditProfilePopup from './EditProfilePopup';
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
@@ -52,6 +53,13 @@ function App() {
     })
   }
   
+  function handleUpdateAvatar({avatar}) {
+    ApiConfig.setUserAvatar(avatar).then((c) => {
+      setCurrentUser(c);
+      closeAllPopups();
+    })
+  }
+  
   return ( 
     <CurrentUserContext.Provider value={currentUser}>
   <div className="body">
@@ -73,22 +81,12 @@ function App() {
        />
 
     {/*Сначала идут переменные, потом функции, потом дополнительные классы, затем инпуты и кнопки*/}
-    <PopupWithForm
-        name="update-avatar-popup"
-        title="Обновить аватар"
-        button="Сохранить"
-        isOpen={isEditAvatarPopupOpen}
-        onClose={closeAllPopups}
-        classNameButton="popup__save-avatar-button"
-        classNameTitle="popup__title_avatar-form"
-        classNameContainer="popup__container_min-height"
-        classNameForm="submit-avatar-form-handler-save">
-        <label>
-          <input id="avatar" type="text" name="avatar" placeholder="Ссылка на картинку" className="avatar popup__input popup__subtitle avatar-name-input" required />
-          <span id="avatar-error" className="avatar-error popup__error"></span>
-        </label>
-    </PopupWithForm>
-        
+
+    <EditAvatarPopup
+      isOpen={isEditAvatarPopupOpen}
+      onClose={closeAllPopups}
+      onUpdateAvatar={handleUpdateAvatar}
+     />
     <PopupWithForm
         name="confirm-popup"
         title="Вы уверены?"
