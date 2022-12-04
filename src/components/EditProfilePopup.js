@@ -10,7 +10,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
     useEffect(() => {
         setName(currentUser.name || '');
         setDescription(currentUser.about || '');
-      }, [currentUser]); 
+      }, [currentUser, isOpen]); 
     
     function handleSubmit(e) {
       e.preventDefault();
@@ -29,7 +29,6 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
         setDescription(e.target.value)  
     }
     return(
-        <>
         <PopupWithForm
         name="profile-popup"
         title="Редактировать профиль"
@@ -48,8 +47,6 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
           <span id="job-error" className="job-error popup__error popup__error_position_bottom"></span>
         </label>
         </PopupWithForm>
-
-        </>
     )
 }
 export default EditProfilePopup;

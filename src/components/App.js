@@ -22,13 +22,10 @@ function App() {
     ApiConfig.getInitialCards().then(data => {
       setCards(data)
     })
-}, [])
-
-  useEffect(() => {
     ApiConfig.getUserInfo().then(data => {
       setCurrentUser(data)
     });
-  }, [])
+}, [])
 
   function handleAddPlaceSubmit(name, link) {
     ApiConfig.generateCard(name, link)
