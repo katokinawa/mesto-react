@@ -22,9 +22,12 @@ function App() {
     ApiConfig.getInitialCards().then(data => {
       setCards(data)
     })
+    .catch(err => console.error(err));
+
     ApiConfig.getUserInfo().then(data => {
       setCurrentUser(data)
-    });
+    })
+    .catch(err => console.error(err));
 }, [])
 
   function handleAddPlaceSubmit(name, link) {
@@ -33,6 +36,7 @@ function App() {
         setCards([newCard, ...cards]);
         closeAllPopups();
     })
+    .catch(err => console.error(err));
   }
 
   function handleCardLike(card) {
@@ -41,16 +45,18 @@ function App() {
     
     // Отправляем запрос в API и получаем обновлённые данные карточки
     ApiConfig.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-    });
+        setCards((state) => state.map((cardForLike) => cardForLike._id === card._id ? newCard : cardForLike));
+    })
+    .catch(err => console.error(err));
   }
   
-  function handleCardDelete(card) {
-    ApiConfig.deleteCard(card._id).then(() => {
-      setCards(cards.filter((c) => {
-        return c._id !== card._id;
+  function handleCardDelete(cardForDelete) {
+    ApiConfig.deleteCard(cardForDelete._id).then(() => {
+      setCards((state) => state.filter((arrayWithCard) => {
+        return arrayWithCard._id !== cardForDelete._id;
       }));
     })
+    .catch(err => console.error(err));
   }
 
   function closeAllPopups() {
@@ -77,17 +83,19 @@ function App() {
   }
 
   function handleUpdateUser({name, about}) {
-    ApiConfig.setUserInfo(name, about).then((c) => {
-      setCurrentUser(c)
+    ApiConfig.setUserInfo(name, about).then((updateUser) => {
+      setCurrentUser(updateUser)
       closeAllPopups();
     })
+    .catch(err => console.error(err));
   }
   
   function handleUpdateAvatar({avatar}) {
-    ApiConfig.setUserAvatar(avatar).then((c) => {
-      setCurrentUser(c);
+    ApiConfig.setUserAvatar(avatar).then((updateAvatar) => {
+      setCurrentUser(updateAvatar);
       closeAllPopups();
     })
+    .catch(err => console.error(err));
   }
   
   return ( 
