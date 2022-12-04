@@ -1,14 +1,14 @@
 import PopupWithForm from "./PopupWithForm";
 import { useState } from 'react'
 
-function AddPlacePopup({isOpen, onClose, onAddPlace}) {
+function AddPlacePopup(props) {
     const [name, setName] = useState('')
     const [link, setLink] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault();
   
-        onAddPlace(name, link);
+        props.onAddPlace(name, link);
       }
   
       function handleChangeName(e) {
@@ -24,8 +24,8 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
         name="photo-item-popup"
         title="Новое место"
         button="Создать"
-        isOpen={isOpen}
-        onClose={onClose}
+        isOpen={props.isOpen}
+        onClose={props.onClose}
         onSubmit={handleSubmit}
         classNameButton="popup__create-button"
         classNameTitle="popup__title_item-form"
